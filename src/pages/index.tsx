@@ -3,7 +3,7 @@ import React from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
-import useThemeSwitcher from '../common/hooks/useTheme';
+import useThemeSwitcher from '../common/hooks/useThemeSwitcher';
 
 const Home: NextPage = () => {
   const { onSwitchTheme } = useThemeSwitcher();

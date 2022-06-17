@@ -1,15 +1,24 @@
 import React from 'react';
+
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
-const Home: NextPage = () => (
-  <div>
-    <Head>
-      <title>Vitor Sanches</title>
-    </Head>
+import useThemeSwitcher from '../common/hooks/useTheme';
 
-    <h1>Vitor Sanches&apos; Blog</h1>
-  </div>
-);
+const Home: NextPage = () => {
+  const { onSwitchTheme } = useThemeSwitcher();
+
+  return (
+    <div>
+      <Head>
+        <title>Vitor Sanches</title>
+      </Head>
+
+      <h1>Vitor Sanches&apos; Blog</h1>
+
+      <button onClick={onSwitchTheme}>Switch Theme</button>
+    </div>
+  );
+};
 
 export default Home;

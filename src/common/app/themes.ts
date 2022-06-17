@@ -10,3 +10,21 @@ export const lightTheme: DefaultTheme = {
     }
   }
 };
+
+export const darkTheme: DefaultTheme = {
+  colors: {
+    background: '#000000',
+    primary: '#F80AE0',
+    typography: {
+      primary: '#FFFFFF',
+      secondary: '#ADACAC'
+    }
+  }
+};
+
+const themes = {
+  darkTheme,
+  lightTheme
+};
+
+export default themes;

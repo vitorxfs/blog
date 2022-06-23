@@ -1,11 +1,11 @@
 import React from 'react';
 
 import '@testing-library/jest-dom';
-import { getLuminance } from 'polished';
 import { fireEvent, render, screen } from '@testing-library/react';
+import { getLuminance } from 'polished';
 import { ThemeConsumer } from 'styled-components';
 
-import ThemeProvider, { ThemeSwitcherContext } from '../../src/common/providers/ThemeSwitcherProvider';
+import ThemeProvider, { ThemeSwitcherContext } from '../../src/common/providers/ThemeProvider';
 
 describe('ThemeProvider', () => {
   it('sets light theme by default', () => {

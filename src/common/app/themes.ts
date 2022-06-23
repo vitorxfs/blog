@@ -1,5 +1,11 @@
 import { DefaultTheme } from 'styled-components';
 
+const breakPoints: DefaultTheme['breakPoints'] = {
+  sm: '600px',
+  md: '900px',
+  lg: '1200px'
+};
+
 export const lightTheme: DefaultTheme = {
   colors: {
     background: '#FFFFFF',
@@ -8,18 +14,20 @@ export const lightTheme: DefaultTheme = {
       primary: '#000000',
       secondary: '#5D5C5C'
     }
-  }
+  },
+  breakPoints
 };
 
 export const darkTheme: DefaultTheme = {
   colors: {
-    background: '#000000',
+    background: '#19181D',
     primary: '#F80AE0',
     typography: {
       primary: '#FFFFFF',
-      secondary: '#ADACAC'
+      secondary: '#B2B1B1'
     }
-  }
+  },
+  breakPoints
 };
 
 const themes = {

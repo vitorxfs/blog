@@ -10,5 +10,10 @@ declare module 'styled-components' {
         secondary: string;
       };
     };
+    breakPoints: {
+      sm: string;
+      md: string;
+      lg: string;
+    }
   }
 };

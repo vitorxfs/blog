@@ -9,11 +9,15 @@ export enum Theme {
   Dark = 'darkTheme'
 }
 
+const INITIAL_THEME = Theme.Light;
+
 interface ThemeSwitcherContextAttributes {
+  currentTheme: Theme;
   onSwitchTheme: () => void;
 }
 
 export const ThemeSwitcherContext = React.createContext<ThemeSwitcherContextAttributes>({
+  currentTheme: INITIAL_THEME,
   onSwitchTheme: () => {}
 });
 
@@ -22,14 +26,14 @@ interface ThemeProviderProps {
 }
 
 const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>(Theme.Light);
+  const [theme, setTheme] = useState<Theme>(INITIAL_THEME);
 
   const onSwitchTheme = () => {
     setTheme((prevValue) => prevValue === Theme.Light ? Theme.Dark : Theme.Light);
   };
 
   return (
-    <ThemeSwitcherContext.Provider value={{ onSwitchTheme }}>
+    <ThemeSwitcherContext.Provider value={{ currentTheme: theme, onSwitchTheme }}>
       <StyledThemeProvider theme={themes[theme]}>
         {children}
       </StyledThemeProvider>

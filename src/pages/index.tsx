@@ -4,21 +4,31 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 
 import Header from '../common/components/Header';
-import useThemeSwitcher from '../common/hooks/useThemeSwitcher';
+import PageContainer from '../common/components/PageContainer';
+import Posts from '../common/components/Posts';
+import styled from 'styled-components';
+import ThemeSwitcherButton from '../common/components/ThemeSwitcherButton';
+
+const HeaderContainer = styled.div`
+  padding-top: 50px;
+  padding-bottom: 80px;
+`;
 
 const Home: NextPage = () => {
-  const { onSwitchTheme } = useThemeSwitcher();
-
   return (
-    <div>
+    <>
       <Head>
         <title>Vitor Sanches</title>
       </Head>
 
-      <Header />
+      <PageContainer>
+        <HeaderContainer>
+          <Header />
+        </HeaderContainer>
 
-      <button onClick={onSwitchTheme}>Switch Theme</button>
-    </div>
+        <Posts />
+      </PageContainer>
+    </>
   );
 };
 

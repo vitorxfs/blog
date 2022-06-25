@@ -31,9 +31,9 @@ const Header: React.FC = () => {
       </StarContainer>
 
       <SocialMediaContainer>
-        <SocialMediaLink href={GITHUB_URL} target="_blank"><GitHub /></SocialMediaLink>
-        <SocialMediaLink href={TWITTER_URL} target="_blank"><Twitter /></SocialMediaLink>
-        <SocialMediaLink href={LINKEDIN_URL} target="_blank"><Linkedin /></SocialMediaLink>
+        <SocialMediaLink href={GITHUB_URL || '#'} target="_blank"><GitHub /></SocialMediaLink>
+        <SocialMediaLink href={TWITTER_URL || '#'} target="_blank"><Twitter /></SocialMediaLink>
+        <SocialMediaLink href={LINKEDIN_URL || '#'} target="_blank"><Linkedin /></SocialMediaLink>
       </SocialMediaContainer>
     </Container>
   );

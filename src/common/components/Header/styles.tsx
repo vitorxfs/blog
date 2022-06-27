@@ -5,8 +5,6 @@ export const Container = styled.header`
   display: flex;
   flex-direction: row;
   gap: 8px;
-  margin: 0 auto;
-  max-width: 1000px;
 
   @media(max-width: ${props => props.theme.breakPoints.sm}) {
     flex-direction: column;

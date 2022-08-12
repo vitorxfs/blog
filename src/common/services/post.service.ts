@@ -1,35 +1,31 @@
-export interface Post {
-  description: string;
-  id: string;
-  publishedAt: string;
-  title: string;
-}
+import { getPrismicClientAdapter } from '../clients/cms-client/prismic-client.adapter';
+import CmsClient from '../clients/cms-client/cms-client.interface';
+import Post from '../models/post.model';
 
 export interface IPostService {
-  getPosts: () => Post[];
+  getPosts: () => Promise<Post[]>;
+}
+
+export interface PostServiceDependencies {
+  cmsClient: CmsClient;
 }
 
 export class PostService implements IPostService {
-  getPosts (): Post[] {
-    const postsMock: Post[] = new Array<Post>(5).fill({
-      id: '',
-      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur consectetur faucibus ornare. Etiam eget auctor neque.',
-      publishedAt: new Date().toLocaleString('pt-br', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric'
-      })
-    }).map((post, index) => ({ ...post, id: index.toString() }));
+  cmsClient: CmsClient;
 
-    return postsMock;
+  constructor ({ cmsClient }: PostServiceDependencies) {
+    this.cmsClient = cmsClient;
+  }
+
+  async getPosts (): Promise<Post[]> {
+    return await this.cmsClient.getPosts();
   };
 }
 
 let postService: IPostService;
 export const getPostService = () => {
   if (!postService) {
-    postService = new PostService();
+    postService = new PostService({ cmsClient: getPrismicClientAdapter() });
   }
 
   return postService;

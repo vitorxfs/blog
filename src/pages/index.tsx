@@ -4,10 +4,11 @@ import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import styled from 'styled-components';
 
-import { Post, getPostService } from '../common/services/post.service';
+import { getPostService } from '../common/services/post.service';
 import Header from '../common/components/Header';
 import PageContainer from '../common/components/PageContainer';
 import Posts from '../common/components/Posts';
+import { PostAttributes } from '../common/models/post.model';
 
 const HeaderContainer = styled.div`
   padding-top: 50px;
@@ -15,7 +16,7 @@ const HeaderContainer = styled.div`
 `;
 
 interface Props {
-  posts: Post[];
+  posts: PostAttributes[];
 }
 
 const Home: NextPage<Props> = ({ posts }) => {
@@ -38,13 +39,13 @@ const Home: NextPage<Props> = ({ posts }) => {
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const postService = getPostService();
-  const posts = postService.getPosts();
+  const posts = await postService.getPosts();
 
   const revalidate = 24 * 60 * 60; // In seconds
 
   return {
     props: {
-      posts
+      posts: posts.map((post) => post.toJSON())
     },
     revalidate
   };

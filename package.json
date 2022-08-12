@@ -13,6 +13,8 @@
     "test": "jest --watch"
   },
   "dependencies": {
+    "@prismicio/client": "^6.6.4",
+    "@prismicio/helpers": "^2.3.3",
     "axios": "^0.27.2",
     "next": "12.1.6",
     "polished": "^4.2.2",

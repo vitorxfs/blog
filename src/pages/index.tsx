@@ -7,8 +7,8 @@ import styled from 'styled-components';
 import { getPostService } from '../common/services/post.service';
 import Header from '../common/components/Header';
 import PageContainer from '../common/components/PageContainer';
+import Post, { PostAttributes } from '../common/models/post.model';
 import Posts from '../common/components/Posts';
-import { PostAttributes } from '../common/models/post.model';
 
 const HeaderContainer = styled.div`
   padding-top: 50px;
@@ -37,6 +37,18 @@ const Home: NextPage<Props> = ({ posts }) => {
   );
 };
 
+const formatPost = (post: Post): PostAttributes => {
+  const jsonPost = post.toJSON();
+
+  return {
+    description: jsonPost.description,
+    id: jsonPost.id,
+    publishedAt: (new Date(jsonPost.publishedAt))
+      .toLocaleDateString('pt-br', { day: 'numeric', month: 'long', year: 'numeric' }),
+    title: jsonPost.title
+  };
+};
+
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const postService = getPostService();
   const posts = await postService.getPosts();
@@ -45,7 +57,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
   return {
     props: {
-      posts: posts.map((post) => post.toJSON())
+      posts: posts.map((post) => formatPost(post))
     },
     revalidate
   };

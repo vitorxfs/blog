@@ -1,4 +1,5 @@
 export interface PostAttributes {
+  content: string;
   description: string;
   id: string;
   publishedAt: string;
@@ -6,17 +7,20 @@ export interface PostAttributes {
 }
 
 export class Post {
+  content: string;
   description: string;
   id: string;
   publishedAt: string;
   title: string;
 
   constructor ({
+    content,
     description,
     id,
     publishedAt,
     title
   }: PostAttributes) {
+    this.content = content;
     this.description = description;
     this.id = id;
     this.publishedAt = publishedAt;
@@ -25,6 +29,7 @@ export class Post {
 
   toJSON (): PostAttributes {
     return {
+      content: this.content,
       description: this.description,
       id: this.id,
       publishedAt: this.publishedAt,

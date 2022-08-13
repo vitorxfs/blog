@@ -3,6 +3,7 @@ import CmsClient from '../clients/cms-client/cms-client.interface';
 import Post from '../models/post.model';
 
 export interface IPostService {
+  getPostByUid: (uid: string) => Promise<Post>;
   getPosts: () => Promise<Post[]>;
 }
 
@@ -20,6 +21,10 @@ export class PostService implements IPostService {
   async getPosts (): Promise<Post[]> {
     return await this.cmsClient.getPosts();
   };
+
+  async getPostByUid (uid: string): Promise<Post> {
+    return await this.cmsClient.getPostByUid(uid);
+  }
 }
 
 let postService: IPostService;

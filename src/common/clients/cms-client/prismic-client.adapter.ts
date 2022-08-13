@@ -1,3 +1,4 @@
+import { asHTML } from '@prismicio/helpers';
 import { Client as PrismicClient, createClient } from '@prismicio/client';
 
 import { PRISMIC_REPOSITORY_NAME } from '../../../env';
@@ -27,8 +28,15 @@ export class PrismicClientAdapter implements CmsClient {
     return posts.map((post) => this.postFromJSON(post));
   }
 
+  async getPostByUid (uid: string): Promise<Post> {
+    const post = await this.prismicClient.getByUID('posts', uid);
+
+    return this.postFromJSON(post);
+  }
+
   private postFromJSON (document: Record<string, any>): Post {
     return new Post({
+      content: asHTML(document.data.content) || '',
       description: document.data.description,
       id: document.uid,
       publishedAt: document.first_publication_date,

@@ -16,7 +16,7 @@ const HeaderContainer = styled.div`
 `;
 
 interface Props {
-  posts: PostAttributes[];
+  posts: Omit<PostAttributes, 'content'>[];
 }
 
 const Home: NextPage<Props> = ({ posts }) => {
@@ -37,7 +37,7 @@ const Home: NextPage<Props> = ({ posts }) => {
   );
 };
 
-const formatPost = (post: Post): PostAttributes => {
+const formatPost = (post: Post): Omit<PostAttributes, 'content'> => {
   const jsonPost = post.toJSON();
 
   return {

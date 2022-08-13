@@ -10,7 +10,9 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     background-color: ${props => props.theme.colors.background};
-    color: ${props => props.theme.colors.typography.primary}
+    color: ${props => props.theme.colors.typography.primary};
+
+    transition: background-color ease 100ms;
   }
 
   a {

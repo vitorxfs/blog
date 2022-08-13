@@ -23,7 +23,7 @@ const Home: NextPage<Props> = ({ post }) => {
   return (
     <>
       <Head>
-        <title>Vitor Sanches | {post.title}</title>
+        <title>{`Vitor Sanches | ${post.title}`}</title>
       </Head>
 
       <PageContainer>

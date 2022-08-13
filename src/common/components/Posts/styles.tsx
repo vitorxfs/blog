@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const PostItem = styled.a`
   padding-bottom: 10px;
   padding-top: 10px;
+  cursor: pointer;
 `;
 
 export const PostsContainer = styled.section`

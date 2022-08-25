@@ -11,7 +11,7 @@
 <section>
 
 <br />
-<p>Watch it running at <a href="vitorsnx.vercel.app">vitorsnx.vercel.app</a></p>
+<p>Watch it running at <a href="https://vitorsnx.vercel.app" target="_blank">vitorsnx.vercel.app</a></p>
 </center>
 
 <br />
@@ -22,7 +22,7 @@
 
 Clone or download this repository
 
-Create a [Prismic](prismic.io) repository with the following document definition:
+Create a [Prismic](https://prismic.io) repository with the following document definition:
 ```
 posts: {
   description: string,

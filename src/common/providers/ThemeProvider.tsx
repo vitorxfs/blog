@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 
+import { LOCAL_STORAGE_THEME_KEY } from '../../env';
 import themes from '../app/themes';
 import useIsFirstRender from '../hooks/useIsFirstRender';
 import useLocalStorage from '../hooks/useLocalStorage';
@@ -12,7 +13,6 @@ export enum Theme {
 }
 
 const INITIAL_THEME = Theme.Light;
-const THEME_STORAGE_KEY = 'VITOR_SANCHES_BLOG_THEME';
 
 interface ThemeSwitcherContextAttributes {
   currentTheme: Theme;
@@ -39,19 +39,19 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
   useEffect(() => {
     if (isFirstRender) {
-      const theme = getValue(THEME_STORAGE_KEY);
+      const theme = getValue(LOCAL_STORAGE_THEME_KEY);
 
       if (theme != null) {
         setTheme(theme as Theme);
       } else {
-        setValue(THEME_STORAGE_KEY, INITIAL_THEME);
+        setValue(LOCAL_STORAGE_THEME_KEY, INITIAL_THEME);
       }
     }
   }, [getValue, isFirstRender, setValue]);
 
   useEffect(() => {
     if (!isFirstRender) {
-      setValue(THEME_STORAGE_KEY, theme);
+      setValue(LOCAL_STORAGE_THEME_KEY, theme);
     }
   }, [isFirstRender, setValue, theme]);
 

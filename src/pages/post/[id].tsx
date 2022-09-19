@@ -26,18 +26,18 @@ const Home: NextPage<Props> = ({ post }) => {
   return (
     <>
       <Head>
-        <meta property="image" content={DEFAULT_EMBED_POST_IMAGE} />
+        <meta name="image" content={DEFAULT_EMBED_POST_IMAGE} />
         <meta property="og:image" content={DEFAULT_EMBED_POST_IMAGE} />
         <meta property="og:image:secure_url" content={DEFAULT_EMBED_POST_IMAGE} />
         <meta property="og:image:alt" content={post.title} />
         <meta property="og:image:type" content="image/png" />
 
-        <meta property="twitter:image" content={DEFAULT_EMBED_POST_IMAGE} />
-        <meta property="twitter:image:src" content={DEFAULT_EMBED_POST_IMAGE} />
-        <meta property="twitter:image:alt" content={post.title} />
-        <meta property="twitter:image:type" content="image/png" />
+        <meta name="twitter:image" content={DEFAULT_EMBED_POST_IMAGE} />
+        <meta name="twitter:image:src" content={DEFAULT_EMBED_POST_IMAGE} />
+        <meta name="twitter:image:alt" content={post.title} />
+        <meta name="twitter:image:type" content="image/png" />
 
-        <meta property="description" content={post.description} />
+        <meta name="description" content={post.description} />
         <meta property="og:description" content={post.description} />
 
         <meta property="og:url" content={postUrl} />

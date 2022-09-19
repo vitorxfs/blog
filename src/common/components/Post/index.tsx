@@ -13,8 +13,6 @@ interface PostProps {
 const Post: React.FC<PostProps> = ({ post }) => {
   return (
     <>
-      <PostMetatags post={post} />
-
       <Container>
         <PublishedAt>{post.publishedAt}</PublishedAt>
         <Title>{post.title}</Title>
@@ -28,3 +26,4 @@ const Post: React.FC<PostProps> = ({ post }) => {
 };
 
 export default Post;
+export { PostMetatags };

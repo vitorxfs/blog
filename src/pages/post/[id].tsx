@@ -7,7 +7,7 @@ import { getPostService } from '../../common/services/post.service';
 import Head from 'next/head';
 import Header from '../../common/components/Header';
 import PageContainer from '../../common/components/PageContainer';
-import Post from '../../common/components/Post';
+import Post, { PostMetatags } from '../../common/components/Post';
 import PostClass, { PostAttributes } from '../../common/models/post.model';
 
 const HeaderContainer = styled.div`
@@ -23,6 +23,7 @@ const Home: NextPage<Props> = ({ post }) => {
   return (
     <>
       <Head>
+        <PostMetatags post={post} />
         <title>{`Vitor Sanches | ${post.title}`}</title>
       </Head>
 

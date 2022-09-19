@@ -1,6 +1,8 @@
 import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
+import AppMetatags from '../common/app/metatags';
+
 export default class MyDocument extends Document {
   static async getInitialProps (ctx: DocumentContext) {
     const sheet = new ServerStyleSheet();
@@ -28,6 +30,7 @@ export default class MyDocument extends Document {
       <Html lang="pt-br">
         <Head>
           <link href="https://fonts.googleapis.com/css2?family=Limelight&family=Roboto:wght@400;700;900&display=swap" rel="stylesheet"></link>
+          <AppMetatags />
         </Head>
         <body>
           <Main />

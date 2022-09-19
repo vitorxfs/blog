@@ -9,6 +9,8 @@ import useThemeSwitcher from '../../hooks/useThemeSwitcher';
 const ThemeSwitcherButton: React.FC = () => {
   const { currentTheme, onSwitchTheme } = useThemeSwitcher();
 
+  const ariaLabel = `Alterar para tema ${currentTheme === Theme.Light ? 'escuro' : 'claro'}`;
+
   const renderIcon = (theme: Theme) => {
     switch (theme) {
       case Theme.Dark:
@@ -20,7 +22,7 @@ const ThemeSwitcherButton: React.FC = () => {
   };
 
   return (
-    <RoundButton onClick={onSwitchTheme}>
+    <RoundButton onClick={onSwitchTheme} aria-label={ariaLabel}>
       {renderIcon(currentTheme)}
     </RoundButton>
   );

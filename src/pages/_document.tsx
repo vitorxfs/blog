@@ -25,7 +25,7 @@ export default class MyDocument extends Document {
 
   render () {
     return (
-      <Html>
+      <Html lang="pt-br">
         <Head>
           <link href="https://fonts.googleapis.com/css2?family=Limelight&family=Roboto:wght@400;700;900&display=swap" rel="stylesheet"></link>
         </Head>

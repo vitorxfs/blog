@@ -23,22 +23,22 @@ const Header: React.FC = () => {
     <Container>
       <TitleContainer itemScope itemType="https://schema.org/Person">
         <Title><Link href="/" itemProp="name">Vitor Sanches</Link></Title>
-        <SubTitle itemProp="jobTitle">Front-end developer</SubTitle>
+        <SubTitle itemProp="jobTitle">Desenvolvedor Front-end</SubTitle>
       </TitleContainer>
 
       <StarContainer>
-        <StarIcon stroke={colors.typography.primary} />
+        <StarIcon stroke={colors.typography.primary} aria-label=""/>
       </StarContainer>
 
       <SocialMediaContainer>
         <Link href={GITHUB_URL || '#'} passHref>
-            <SocialMediaLink target="_blank"><GitHub /></SocialMediaLink>
+            <SocialMediaLink target="_blank" aria-label="GitHub"><GitHub /></SocialMediaLink>
         </Link>
         <Link href={TWITTER_URL || '#'} passHref>
-            <SocialMediaLink target="_blank"><Twitter /></SocialMediaLink>
+            <SocialMediaLink target="_blank" aria-label="Twitter"><Twitter /></SocialMediaLink>
         </Link>
         <Link href={LINKEDIN_URL || '#'} passHref>
-              <SocialMediaLink target="_blank"><Linkedin /></SocialMediaLink>
+              <SocialMediaLink target="_blank" aria-label="Linkedin"><Linkedin /></SocialMediaLink>
         </Link>
       </SocialMediaContainer>
     </Container>

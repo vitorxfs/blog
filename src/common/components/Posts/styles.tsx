@@ -6,7 +6,7 @@ export const PostItem = styled.a`
   cursor: pointer;
 `;
 
-export const PostsContainer = styled.section`
+export const PostsContainer = styled.main`
   display: flex;
   flex-direction: column;
   gap: 16px;

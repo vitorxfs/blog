@@ -1,7 +1,6 @@
 import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document';
-import { ServerStyleSheet } from 'styled-components';
 
-import AppMetatags from '../common/app/metatags';
+import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
   static async getInitialProps (ctx: DocumentContext) {
@@ -30,7 +29,11 @@ export default class MyDocument extends Document {
       <Html lang="pt-br">
         <Head>
           <link href="https://fonts.googleapis.com/css2?family=Limelight&family=Roboto:wght@400;700;900&display=swap" rel="stylesheet"></link>
-          <AppMetatags />
+          <meta property="og:locale" content="pt_BR" />
+          <meta property="og:site_name" content="pt_BR" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@vitorsnx" />
+          <meta name="twitter:creator" content="@vitorsnx" />
         </Head>
         <body>
           <Main />

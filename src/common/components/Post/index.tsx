@@ -4,7 +4,6 @@ import { PostAttributes } from '../../models/post.model';
 import parse from 'html-react-parser';
 
 import { Container, ContentContainer, PublishedAt, Author, Title } from './styles';
-import PostMetatags from './metatags';
 
 interface PostProps {
   post: PostAttributes;
@@ -26,4 +25,3 @@ const Post: React.FC<PostProps> = ({ post }) => {
 };
 
 export default Post;
-export { PostMetatags };

@@ -1,13 +1,14 @@
+import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import React from 'react';
+import Head from 'next/head';
+
 import styled from 'styled-components';
 
-import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-
+import { APP_URL, DEFAULT_EMBED_POST_IMAGE } from '../../env';
 import { getPostService } from '../../common/services/post.service';
-import Head from 'next/head';
 import Header from '../../common/components/Header';
 import PageContainer from '../../common/components/PageContainer';
-import Post, { PostMetatags } from '../../common/components/Post';
+import Post from '../../common/components/Post';
 import PostClass, { PostAttributes } from '../../common/models/post.model';
 
 const HeaderContainer = styled.div`
@@ -20,10 +21,31 @@ interface Props {
 }
 
 const Home: NextPage<Props> = ({ post }) => {
+  const postUrl = `${APP_URL}/post/${post.id}`;
+
   return (
     <>
       <Head>
-        <PostMetatags post={post} />
+        <meta property="image" content={DEFAULT_EMBED_POST_IMAGE} />
+        <meta property="og:image" content={DEFAULT_EMBED_POST_IMAGE} />
+        <meta property="og:image:secure_url" content={DEFAULT_EMBED_POST_IMAGE} />
+        <meta property="og:image:alt" content={post.title} />
+        <meta property="og:image:type" content="image/png" />
+
+        <meta property="twitter:image" content={DEFAULT_EMBED_POST_IMAGE} />
+        <meta property="twitter:image:src" content={DEFAULT_EMBED_POST_IMAGE} />
+        <meta property="twitter:image:alt" content={post.title} />
+        <meta property="twitter:image:type" content="image/png" />
+
+        <meta property="description" content={post.description} />
+        <meta property="og:description" content={post.description} />
+
+        <meta property="og:url" content={postUrl} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:type" content="article" />
+
+        <link rel="canonical" href={postUrl} />
+
         <title>{`Vitor Sanches | ${post.title}`}</title>
       </Head>
 

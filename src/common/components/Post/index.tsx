@@ -4,6 +4,7 @@ import { PostAttributes } from '../../models/post.model';
 import parse from 'html-react-parser';
 
 import { Container, ContentContainer, PublishedAt, Author, Title } from './styles';
+import PostMetatags from './metatags';
 
 interface PostProps {
   post: PostAttributes;
@@ -11,14 +12,18 @@ interface PostProps {
 
 const Post: React.FC<PostProps> = ({ post }) => {
   return (
-    <Container>
-      <PublishedAt>{post.publishedAt}</PublishedAt>
-      <Title>{post.title}</Title>
-      <Author>por Vitor Sanches</Author>
-      <ContentContainer>
-        {parse(post.content)}
-      </ContentContainer>
-    </Container>
+    <>
+      <PostMetatags post={post} />
+
+      <Container>
+        <PublishedAt>{post.publishedAt}</PublishedAt>
+        <Title>{post.title}</Title>
+        <Author>por Vitor Sanches</Author>
+        <ContentContainer>
+          {parse(post.content)}
+        </ContentContainer>
+      </Container>
+    </>
   );
 };
 

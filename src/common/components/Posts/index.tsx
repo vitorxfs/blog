@@ -13,11 +13,13 @@ const Posts: React.FC<PostsProps> = ({ posts }) => {
   return (
     <PostsContainer>
       {posts?.map((post) => (
-        <Link key={post.id} href={`/post/${post.id}`}><PostItem tabIndex={0}>
+        <Link key={post.id} href={`/post/${post.id}`} passHref><a>
+          <PostItem>
             <PublishedAt>{post.publishedAt}</PublishedAt>
             <Title>{post.title}</Title>
             <Subtitle>{post.description}</Subtitle>
-        </PostItem></Link>
+          </PostItem>
+        </a></Link>
       ))}
     </PostsContainer>
   );

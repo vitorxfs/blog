@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-export const PostItem = styled.a`
+export const PostItem = styled.li`
   padding-bottom: 10px;
   padding-top: 10px;
-  cursor: pointer;
+  list-style: none;
 `;
 
-export const PostsContainer = styled.main`
+export const PostsContainer = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 16px;

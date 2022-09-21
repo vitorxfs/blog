@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Moon, Sun } from 'react-feather';
+import { motion } from 'framer-motion';
 
 import { RoundButton } from './styles';
 import { Theme } from '../../providers/ThemeProvider';
@@ -23,7 +24,9 @@ const ThemeSwitcherButton: React.FC = () => {
 
   return (
     <RoundButton onClick={onSwitchTheme} aria-label={ariaLabel}>
-      {renderIcon(currentTheme)}
+      <motion.div whileTap={{ scale: [1, 0, 0, 1] }} whileHover={{ scale: 1.1 }}>
+        {renderIcon(currentTheme)}
+      </motion.div>
     </RoundButton>
   );
 };

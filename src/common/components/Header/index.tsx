@@ -38,7 +38,7 @@ const Header: React.FC = () => {
             <SocialMediaLink target="_blank" aria-label="Twitter"><Twitter /></SocialMediaLink>
         </Link>
         <Link href={LINKEDIN_URL || '#'} passHref>
-              <SocialMediaLink target="_blank" aria-label="Linkedin"><Linkedin /></SocialMediaLink>
+            <SocialMediaLink target="_blank" aria-label="Linkedin"><Linkedin /></SocialMediaLink>
         </Link>
       </SocialMediaContainer>
     </Container>

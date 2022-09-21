@@ -25,6 +25,14 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+
+  ::-moz-selection { /* Code for Firefox */
+    background: ${props => props.theme.colors.primary};
+  }
+
+  ::selection {
+    background: ${props => props.theme.colors.primary};
+  }
 `;
 
 export default GlobalStyle;

@@ -22,6 +22,26 @@ export const SocialMediaLink = styled.a`
   color: ${props => props.theme.colors?.typography.primary};
   display: inline-block;
   padding: 8px;
+  position: relative;
+
+  &::before {
+    content: '';
+    background-color: ${props => props.theme.colors?.primary};
+    border-radius: 50%;
+    height: 0;
+    margin: auto;
+    position: absolute;
+    right: 0; left: 0;
+    top: 0; bottom: 0;
+    width: 0;
+    z-index: -1;
+  }
+
+  &:hover::before {
+    height: 32px;
+    transition: width 150ms ease, height 150ms ease;
+    width: 32px;
+  }
 `;
 
 export const StarContainer = styled.div`
@@ -47,6 +67,24 @@ export const SubTitle = styled.p`
 export const Title = styled.p`
   color: ${props => props.theme.colors?.typography.primary};
   font-size: 36px;
+  position: relative;
+  width: fit-content;
+
+  &::before {
+    content: '';
+    background-color: ${props => props.theme.colors?.primary};
+    bottom: 8px;
+    display: block;
+    height: 0;
+    position: absolute;
+    transition: height 100ms ease;
+    width: 100%;
+    z-index: -1;
+  }
+
+  &:hover::before {
+    height: 30%;
+  }
 `;
 
 export const TitleContainer = styled.div`

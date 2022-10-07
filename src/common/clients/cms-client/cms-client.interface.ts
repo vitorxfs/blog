@@ -1,3 +1,6 @@
+import { ENVIRONMENT } from '../../../env';
+import { getMockedCMSClientAdapter } from './mocked-cms-client';
+import { getPrismicClientAdapter } from './prismic-client.adapter';
 import { Post } from '../../models/post.model';
 
 interface CmsClient {
@@ -6,3 +9,14 @@ interface CmsClient {
 }
 
 export default CmsClient;
+
+let cmsClient: CmsClient;
+export const getCmsClient = (): CmsClient => {
+  if (!cmsClient) {
+    cmsClient = ENVIRONMENT === 'development'
+      ? getMockedCMSClientAdapter()
+      : getPrismicClientAdapter();
+  }
+
+  return cmsClient;
+};

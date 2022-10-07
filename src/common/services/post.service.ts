@@ -1,5 +1,4 @@
-import { getPrismicClientAdapter } from '../clients/cms-client/prismic-client.adapter';
-import CmsClient from '../clients/cms-client/cms-client.interface';
+import CmsClient, { getCmsClient } from '../clients/cms-client/cms-client.interface';
 import Post from '../models/post.model';
 
 export interface IPostService {
@@ -30,7 +29,7 @@ export class PostService implements IPostService {
 let postService: IPostService;
 export const getPostService = () => {
   if (!postService) {
-    postService = new PostService({ cmsClient: getPrismicClientAdapter() });
+    postService = new PostService({ cmsClient: getCmsClient() });
   }
 
   return postService;

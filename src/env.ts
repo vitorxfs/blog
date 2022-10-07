@@ -7,4 +7,5 @@ export const LOCAL_STORAGE_THEME_KEY = process.env.NEXT_PUBLIC_THEME_STORAGE_KEY
 export const TWITTER_URL = process.env.NEXT_PUBLIC_TWITTER_URL;
 
 // Private
+export const ENVIRONMENT = process.env.ENVIRONMENT || 'development';
 export const PRISMIC_REPOSITORY_NAME = process.env.PRISMIC_REPOSITORY_NAME || '';

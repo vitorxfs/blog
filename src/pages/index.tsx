@@ -1,10 +1,10 @@
 import React from 'react';
 
 import type { GetStaticProps, NextPage } from 'next';
-import Head from 'next/head';
 import styled from 'styled-components';
 
 import { getPostService } from '../common/services/post.service';
+import Head from '../infrastructure/ui/components/Head';
 import Header from '../common/components/Header';
 import PageContainer from '../common/components/PageContainer';
 import Post, { PostAttributes } from '../common/models/post.model';
@@ -22,9 +22,7 @@ interface Props {
 const Home: NextPage<Props> = ({ posts }) => {
   return (
     <>
-      <Head>
-        <title>Vitor Sanches</title>
-      </Head>
+      <Head pageTitle='Vitor Sanches' />
 
       <PageContainer>
         <HeaderContainer>

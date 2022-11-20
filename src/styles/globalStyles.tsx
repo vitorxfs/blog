@@ -9,10 +9,10 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color: ${props => props.theme.colors.background};
-    color: ${props => props.theme.colors.typography.primary};
+    background-color: ${(props) => props.theme.colors.background};
+    color: ${(props) => props.theme.colors.typography.primary};
 
-    transition: background-color ease 100ms;
+    transition: background-color ease 200ms;
   }
 
   a {
@@ -27,11 +27,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
   ::-moz-selection { /* Code for Firefox */
-    background: ${props => props.theme.colors.primary};
+    background: ${(props) => props.theme.colors.primary};
   }
 
   ::selection {
-    background: ${props => props.theme.colors.primary};
+    background: ${(props) => props.theme.colors.primary};
   }
 `;
 

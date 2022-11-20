@@ -1,38 +1,26 @@
 import React from 'react';
 import NextLink from 'next/link';
 
-interface LinkProps extends Omit<HTMLAnchorElement, 'children' | 'scroll'> {
+type AnchorProps = Omit<
+  React.AnchorHTMLAttributes<HTMLAnchorElement>,
+  'target' | 'href'
+>;
+
+interface LinkProps extends AnchorProps {
   children: React.ReactNode;
-  href: string;
-  prefetch?: boolean;
-  passHref?: boolean;
-  replace?: boolean;
-  shallow?: boolean;
-  scroll?: boolean;
-  locale?: string | false;
+  external?: boolean;
+  to: string;
 }
 
 const Link: React.FC<LinkProps> = ({
   children,
-  href,
-  passHref,
-  prefetch,
-  replace,
-  scroll,
-  shallow,
-  ...rest
+  external,
+  to,
+  ...anchorProps
 }) => {
   return (
-    <NextLink
-      href={href}
-      passHref={passHref}
-      prefetch={prefetch}
-      replace={replace}
-      scroll={scroll}
-      shallow={shallow}
-      {...rest}
-    >
-      <a>
+    <NextLink href={to} passHref>
+      <a target={external ? '_blank' : undefined} {...anchorProps}>
         {children}
       </a>
     </NextLink>

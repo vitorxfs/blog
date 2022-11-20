@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Link from '../../../infrastructure/ui/components/Link';
 
 export const Container = styled.header`
   align-items: center;
@@ -6,7 +7,7 @@ export const Container = styled.header`
   flex-direction: row;
   gap: 8px;
 
-  @media(max-width: ${props => props.theme.breakPoints.sm}) {
+  @media (max-width: ${(props) => props.theme.breakPoints.sm}) {
     flex-direction: column;
   }
 `;
@@ -18,21 +19,23 @@ export const SocialMediaContainer = styled.div`
   order: 3;
 `;
 
-export const SocialMediaLink = styled.a`
-  color: ${props => props.theme.colors?.typography.primary};
+export const SocialMediaLink = styled(Link)`
+  color: ${(props) => props.theme.colors?.typography.primary};
   display: inline-block;
   padding: 8px;
   position: relative;
 
   &::before {
     content: '';
-    background-color: ${props => props.theme.colors?.primary};
+    background-color: ${(props) => props.theme.colors?.primary};
     border-radius: 50%;
     height: 0;
     margin: auto;
     position: absolute;
-    right: 0; left: 0;
-    top: 0; bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
     width: 0;
     z-index: -1;
   }
@@ -50,29 +53,29 @@ export const StarContainer = styled.div`
   justify-content: center;
   order: 2;
 
-  @media(max-width: ${props => props.theme.breakPoints.sm}) {
+  @media (max-width: ${(props) => props.theme.breakPoints.sm}) {
     order: 1;
   }
 `;
 
 export const SubTitle = styled.p`
-  color: ${props => props.theme.colors?.typography.secondary};
+  color: ${(props) => props.theme.colors?.typography.secondary};
   font-size: 20px;
 
-  @media(max-width: ${props => props.theme.breakPoints.sm}) {
+  @media (max-width: ${(props) => props.theme.breakPoints.sm}) {
     text-align: center;
   }
 `;
 
 export const Title = styled.p`
-  color: ${props => props.theme.colors?.typography.primary};
+  color: ${(props) => props.theme.colors?.typography.primary};
   font-size: 36px;
   position: relative;
   width: fit-content;
 
   &::before {
     content: '';
-    background-color: ${props => props.theme.colors?.primary};
+    background-color: ${(props) => props.theme.colors?.primary};
     bottom: 8px;
     display: block;
     height: 0;
@@ -91,7 +94,7 @@ export const TitleContainer = styled.div`
   flex: 1;
   order: 1;
 
-  @media(max-width: ${props => props.theme.breakPoints.sm}) {
+  @media (max-width: ${(props) => props.theme.breakPoints.sm}) {
     justify-content: center;
     order: 2;
   }

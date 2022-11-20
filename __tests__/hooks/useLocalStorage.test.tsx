@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { renderHook } from '@testing-library/react';
 
-import useLocalStorage from '../../src/common/hooks/useLocalStorage';
+import useLocalStorage from '@common/hooks/useLocalStorage';
 
 describe('useLocalStorage', () => {
   it('returns null when trying to get a key that is not set', () => {

@@ -1,9 +1,9 @@
 import { asHTML } from '@prismicio/helpers';
 import { Client as PrismicClient, createClient } from '@prismicio/client';
 
-import { PRISMIC_REPOSITORY_NAME } from '../../../env';
+import { PRISMIC_REPOSITORY_NAME } from 'src/env';
 import CmsClient from './cms-client.interface';
-import Post from '../../models/post.model';
+import Post from '@common/models/post.model';
 
 interface PrismicClientAdapterDependencies {
   prismicClient: PrismicClient;

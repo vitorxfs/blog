@@ -3,8 +3,8 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 
-import Header from '../../src/common/components/Header';
-import ThemeProvider from '../../src/common/providers/ThemeProvider';
+import Header from '@common/components/Header';
+import ThemeProvider from '@common/providers/ThemeProvider';
 
 describe('Home', () => {
   it('renders the website title', () => {
@@ -15,7 +15,7 @@ describe('Home', () => {
     );
 
     const title = screen.getByRole('link', {
-      name: /Vitor Sanches/
+      name: /Vitor Sanches/,
     });
 
     expect(title).toBeInTheDocument();

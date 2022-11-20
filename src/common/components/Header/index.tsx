@@ -12,8 +12,8 @@ import {
   SocialMediaContainer,
   SocialMediaLink,
 } from './styles';
-import { GITHUB_URL, LINKEDIN_URL, TWITTER_URL } from '../../../env';
-import Link from '../../../infrastructure/ui/components/Link';
+import { GITHUB_URL, LINKEDIN_URL, TWITTER_URL } from 'src/env';
+import Link from '@infra/ui/components/Link';
 import StarIcon from '../icons/StarIcon';
 
 const Header: React.FC = () => {

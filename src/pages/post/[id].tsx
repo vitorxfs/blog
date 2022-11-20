@@ -4,12 +4,12 @@ import Head from 'next/head';
 
 import styled from 'styled-components';
 
-import { APP_URL, DEFAULT_EMBED_POST_IMAGE } from '../../env';
-import { getPostService } from '../../common/services/post.service';
-import Header from '../../common/components/Header';
-import PageContainer from '../../common/components/PageContainer';
-import Post from '../../common/components/Post';
-import PostClass, { PostAttributes } from '../../common/models/post.model';
+import { APP_URL, DEFAULT_EMBED_POST_IMAGE } from 'src/env';
+import { getPostService } from '@common/services/post.service';
+import Header from '@common/components/Header';
+import PageContainer from '@common/components/PageContainer';
+import Post from '@common/components/Post';
+import PostClass, { PostAttributes } from '@common/models/post.model';
 
 const HeaderContainer = styled.div`
   padding-top: 50px;
@@ -28,7 +28,10 @@ const Home: NextPage<Props> = ({ post }) => {
       <Head>
         <meta name="image" content={DEFAULT_EMBED_POST_IMAGE} />
         <meta property="og:image" content={DEFAULT_EMBED_POST_IMAGE} />
-        <meta property="og:image:secure_url" content={DEFAULT_EMBED_POST_IMAGE} />
+        <meta
+          property="og:image:secure_url"
+          content={DEFAULT_EMBED_POST_IMAGE}
+        />
         <meta property="og:image:alt" content={post.title} />
         <meta property="og:image:type" content="image/png" />
 
@@ -54,7 +57,7 @@ const Home: NextPage<Props> = ({ post }) => {
           <Header />
         </HeaderContainer>
 
-        <Post post={post}/>
+        <Post post={post} />
       </PageContainer>
     </>
   );
@@ -67,9 +70,12 @@ const formatPost = (post: PostClass): PostAttributes => {
     content: jsonPost.content,
     description: jsonPost.description,
     id: jsonPost.id,
-    publishedAt: (new Date(jsonPost.publishedAt))
-      .toLocaleDateString('pt-br', { day: 'numeric', month: 'long', year: 'numeric' }),
-    title: jsonPost.title
+    publishedAt: new Date(jsonPost.publishedAt).toLocaleDateString('pt-br', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    }),
+    title: jsonPost.title,
   };
 };
 
@@ -78,7 +84,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await postService.getPosts();
 
   const paths = posts.map((post) => ({
-    params: { id: post.id }
+    params: { id: post.id },
   }));
 
   return { paths, fallback: false };
@@ -95,9 +101,9 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 
   return {
     props: {
-      post: formatPost(post)
+      post: formatPost(post),
     },
-    revalidate
+    revalidate,
   };
 };
 

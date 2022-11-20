@@ -1,8 +1,8 @@
 import type { AppProps } from 'next/app';
 
-import GlobalStyle from '../styles/globalStyles';
-import NavBar from '../common/components/NavBar';
-import ThemeProvider from '../common/providers/ThemeProvider';
+import GlobalStyle from 'src/styles/globalStyles';
+import NavBar from '@common/components/NavBar';
+import ThemeProvider from '@common/providers/ThemeProvider';
 
 function MyApp ({ Component, pageProps }: AppProps) {
   return (

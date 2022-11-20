@@ -1,5 +1,5 @@
-import CmsClient, { getCmsClient } from '../clients/cms-client/cms-client.interface';
-import Post from '../models/post.model';
+import CmsClient, { getCmsClient } from '@common/clients/cms-client/cms-client.interface';
+import Post from '@common/models/post.model';
 
 export interface IPostService {
   getPostByUid: (uid: string) => Promise<Post>;

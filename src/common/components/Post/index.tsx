@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { PostAttributes } from '../../models/post.model';
+import { PostAttributes } from '@common/models/post.model';
 import parse from 'html-react-parser';
 
 import { Container, ContentContainer, PublishedAt, Author, Title } from './styles';

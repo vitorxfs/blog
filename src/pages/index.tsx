@@ -3,12 +3,12 @@ import React from 'react';
 import type { GetStaticProps, NextPage } from 'next';
 import styled from 'styled-components';
 
-import { getPostService } from '../common/services/post.service';
-import Head from '../infrastructure/ui/components/Head';
-import Header from '../common/components/Header';
-import PageContainer from '../common/components/PageContainer';
-import Post, { PostAttributes } from '../common/models/post.model';
-import Posts from '../common/components/Posts';
+import { getPostService } from '@common/services/post.service';
+import Head from '@infra/ui/components/Head';
+import Header from '@common/components/Header';
+import PageContainer from '@common/components/PageContainer';
+import Post, { PostAttributes } from '@common/models/post.model';
+import Posts from '@common/components/Posts';
 
 const HeaderContainer = styled.div`
   padding-top: 50px;
@@ -22,7 +22,7 @@ interface Props {
 const Home: NextPage<Props> = ({ posts }) => {
   return (
     <>
-      <Head pageTitle='Vitor Sanches' />
+      <Head pageTitle="Vitor Sanches" />
 
       <PageContainer>
         <HeaderContainer>
@@ -41,9 +41,12 @@ const formatPost = (post: Post): Omit<PostAttributes, 'content'> => {
   return {
     description: jsonPost.description,
     id: jsonPost.id,
-    publishedAt: (new Date(jsonPost.publishedAt))
-      .toLocaleDateString('pt-br', { day: 'numeric', month: 'long', year: 'numeric' }),
-    title: jsonPost.title
+    publishedAt: new Date(jsonPost.publishedAt).toLocaleDateString('pt-br', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    }),
+    title: jsonPost.title,
   };
 };
 
@@ -55,9 +58,9 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
   return {
     props: {
-      posts: posts.map((post) => formatPost(post))
+      posts: posts.map((post) => formatPost(post)),
     },
-    revalidate
+    revalidate,
   };
 };
 

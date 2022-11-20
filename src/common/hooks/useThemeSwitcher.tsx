@@ -1,5 +1,6 @@
 import { useContext } from 'react';
-import { ThemeSwitcherContext } from '../providers/ThemeProvider';
+
+import { ThemeSwitcherContext } from '@common/providers/ThemeProvider';
 
 const useThemeSwitcher = () => {
   const context = useContext(ThemeSwitcherContext);

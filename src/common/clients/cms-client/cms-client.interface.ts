@@ -1,7 +1,7 @@
-import { ENVIRONMENT } from '../../../env';
+import { ENVIRONMENT } from 'src/env';
 import { getMockedCMSClientAdapter } from './mocked-cms-client';
 import { getPrismicClientAdapter } from './prismic-client.adapter';
-import { Post } from '../../models/post.model';
+import { Post } from '@common/models/post.model';
 
 interface CmsClient {
   getPostByUid(uid: string): Promise<Post>;

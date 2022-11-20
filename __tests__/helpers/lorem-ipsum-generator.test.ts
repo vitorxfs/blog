@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-escape */
 import 'jest';
 
-import { generateLoremIpsum, LoremIpsumFormat } from '../../src/common/helpers/lorem-ipsum-generator.helper';
+import { generateLoremIpsum, LoremIpsumFormat } from '@common/helpers/lorem-ipsum-generator.helper';
 
 describe('Lorem ipsum generator', () => {
   it('generates one paragraph with five sentences', () => {

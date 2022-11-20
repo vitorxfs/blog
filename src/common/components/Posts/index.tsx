@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { PostAttributes } from '../../models/post.model';
+import { PostAttributes } from '@common/models/post.model';
 import {
   PostItem,
   PostsContainer,
@@ -8,7 +8,7 @@ import {
   Subtitle,
   Title,
 } from './styles';
-import Link from '../../../infrastructure/ui/components/Link';
+import Link from '@infra/ui/components/Link';
 
 interface PostsProps {
   posts: Omit<PostAttributes, 'content'>[];

@@ -4,8 +4,8 @@ import { Moon, Sun } from 'react-feather';
 import { motion } from 'framer-motion';
 
 import { RoundButton } from './styles';
-import { Theme } from '../../providers/ThemeProvider';
-import useThemeSwitcher from '../../hooks/useThemeSwitcher';
+import { Theme } from '@common/providers/ThemeProvider';
+import useThemeSwitcher from '@common/hooks/useThemeSwitcher';
 
 const ThemeSwitcherButton: React.FC = () => {
   const { currentTheme, onSwitchTheme } = useThemeSwitcher();

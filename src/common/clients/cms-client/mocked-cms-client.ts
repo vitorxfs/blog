@@ -1,5 +1,8 @@
-import { generateLoremIpsumPost, generateLoremIpsumSentence } from '../../helpers/lorem-ipsum-generator.helper';
-import Post from '../../models/post.model';
+import {
+  generateLoremIpsumPost,
+  generateLoremIpsumSentence
+} from '@common/helpers/lorem-ipsum-generator.helper';
+import Post from '@common/models/post.model';
 import CmsClient from './cms-client.interface';
 
 const MOCKED_POSTS: Post[] = Array(10).fill({}).map((_, index) => new Post({

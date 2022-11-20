@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 
-import { LOCAL_STORAGE_THEME_KEY } from '../../env';
-import themes from '../app/themes';
-import useIsFirstRender from '../hooks/useIsFirstRender';
-import useLocalStorage from '../hooks/useLocalStorage';
+import { LOCAL_STORAGE_THEME_KEY } from 'src/env';
+import themes from '@common/app/themes';
+import useIsFirstRender from '@common/hooks/useIsFirstRender';
+import useLocalStorage from '@common/hooks/useLocalStorage';
 
 export enum Theme {
   Light = 'lightTheme',

@@ -5,20 +5,25 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { getLuminance } from 'polished';
 import { ThemeConsumer } from 'styled-components';
 
-import { LOCAL_STORAGE_THEME_KEY } from '../../src/env';
-import ThemeProvider, { Theme, ThemeSwitcherContext } from '../../src/common/providers/ThemeProvider';
+import { LOCAL_STORAGE_THEME_KEY } from 'src/env';
+import ThemeProvider, {
+  Theme,
+  ThemeSwitcherContext,
+} from '@common/providers/ThemeProvider';
 
 const BackgroundColorComponent = () => {
   return (
     <ThemeProvider>
       <ThemeConsumer>
-        {
-          (value) => <><h1>{value.colors.background}</h1></>
-        }
+        {(value) => (
+          <>
+            <h1>{value.colors.background}</h1>
+          </>
+        )}
       </ThemeConsumer>
     </ThemeProvider>
-  )
-}
+  );
+};
 
 describe('ThemeProvider', () => {
   beforeEach(() => {
@@ -33,7 +38,7 @@ describe('ThemeProvider', () => {
     const backgroundColor = screen.getByRole('heading').textContent;
 
     expect(backgroundColor && getLuminance(backgroundColor) < 0.5).toBeTruthy();
-  })
+  });
 
   it('sets light theme by default', () => {
     render(<BackgroundColorComponent />);

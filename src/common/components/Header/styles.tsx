@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Link from '../../../infrastructure/ui/components/Link';
+import Link from 'src/infrastructure/ui/components/Link';
 
 export const Container = styled.header`
   align-items: center;

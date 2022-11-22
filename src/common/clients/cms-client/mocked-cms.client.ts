@@ -3,11 +3,12 @@ import {
   generateLoremIpsumSentence
 } from '@common/helpers/lorem-ipsum-generator.helper';
 import Post from '@common/models/post.model';
-import CmsClient from './cms-client.interface';
+import { CmsClient } from './cms-client.interface';
 
 const MOCKED_POSTS: Post[] = Array(10).fill({}).map((_, index) => new Post({
   content: generateLoremIpsumPost(),
   description: generateLoremIpsumSentence(),
+  lang: 'pt',
   id: `teste-${index}`,
   publishedAt: new Date().toISOString(),
   title: `This is a test: number ${index}`

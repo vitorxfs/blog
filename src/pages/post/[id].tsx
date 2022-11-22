@@ -5,7 +5,7 @@ import Head from 'next/head';
 import styled from 'styled-components';
 
 import { APP_URL, DEFAULT_EMBED_POST_IMAGE } from 'src/env';
-import { getPostService } from '@common/services/post.service';
+import { getPostService } from 'src/initializer';
 import Header from '@common/components/Header';
 import PageContainer from '@common/components/PageContainer';
 import Post from '@common/components/Post';
@@ -26,17 +26,17 @@ const Home: NextPage<Props> = ({ post }) => {
   return (
     <>
       <Head>
-        <meta name="image" content={DEFAULT_EMBED_POST_IMAGE} />
-        <meta property="og:image" content={DEFAULT_EMBED_POST_IMAGE} />
+        <meta name="image" content={post.imageUrl || DEFAULT_EMBED_POST_IMAGE} />
+        <meta property="og:image" content={post.imageUrl || DEFAULT_EMBED_POST_IMAGE} />
         <meta
           property="og:image:secure_url"
-          content={DEFAULT_EMBED_POST_IMAGE}
+          content={post.imageUrl || DEFAULT_EMBED_POST_IMAGE}
         />
         <meta property="og:image:alt" content={post.title} />
         <meta property="og:image:type" content="image/png" />
 
-        <meta name="twitter:image" content={DEFAULT_EMBED_POST_IMAGE} />
-        <meta name="twitter:image:src" content={DEFAULT_EMBED_POST_IMAGE} />
+        <meta name="twitter:image" content={post.imageUrl || DEFAULT_EMBED_POST_IMAGE} />
+        <meta name="twitter:image:src" content={post.imageUrl || DEFAULT_EMBED_POST_IMAGE} />
         <meta name="twitter:image:alt" content={post.title} />
         <meta name="twitter:image:type" content="image/png" />
 
@@ -70,6 +70,8 @@ const formatPost = (post: PostClass): PostAttributes => {
     content: jsonPost.content,
     description: jsonPost.description,
     id: jsonPost.id,
+    lang: jsonPost.lang,
+    imageUrl: jsonPost.imageUrl,
     publishedAt: new Date(jsonPost.publishedAt).toLocaleDateString('pt-br', {
       day: 'numeric',
       month: 'long',
@@ -81,7 +83,7 @@ const formatPost = (post: PostClass): PostAttributes => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const postService = getPostService();
-  const posts = await postService.getPosts();
+  const posts = postService.getPosts();
 
   const paths = posts.map((post) => ({
     params: { id: post.id },
@@ -95,15 +97,12 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 
   const { id } = context.params as { id: string };
 
-  const post = await postService.getPostByUid(id);
-
-  const revalidate = 7 * 24 * 60 * 60; // In seconds
+  const post = postService.getPostByUid(id);
 
   return {
     props: {
       post: formatPost(post),
     },
-    revalidate,
   };
 };
 

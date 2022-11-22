@@ -3,7 +3,7 @@ import React from 'react';
 import type { GetStaticProps, NextPage } from 'next';
 import styled from 'styled-components';
 
-import { getPostService } from '@common/services/post.service';
+import { getPostService } from 'src/initializer';
 import Head from '@infra/ui/components/Head';
 import Header from '@common/components/Header';
 import PageContainer from '@common/components/PageContainer';
@@ -41,6 +41,7 @@ const formatPost = (post: Post): Omit<PostAttributes, 'content'> => {
   return {
     description: jsonPost.description,
     id: jsonPost.id,
+    lang: jsonPost.lang,
     publishedAt: new Date(jsonPost.publishedAt).toLocaleDateString('pt-br', {
       day: 'numeric',
       month: 'long',
@@ -52,15 +53,12 @@ const formatPost = (post: Post): Omit<PostAttributes, 'content'> => {
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const postService = getPostService();
-  const posts = await postService.getPosts();
-
-  const revalidate = 24 * 60 * 60; // In seconds
+  const posts = postService.getPosts();
 
   return {
     props: {
       posts: posts.map((post) => formatPost(post)),
     },
-    revalidate,
   };
 };
 

@@ -1,3 +1,4 @@
+import { orderBy } from 'lodash';
 import fs from 'fs';
 import path from 'path';
 
@@ -29,10 +30,12 @@ export class LocalMarkdownClient implements CmsClientSync {
   getPosts (): Post[] {
     const slugs = this.getAllSlugs();
 
-    return slugs.map((slug) => {
+    const posts = slugs.map((slug) => {
       const markdown = this.findMarkdownPost(slug);
       return this.buildPost(markdown, slug);
     });
+
+    return orderBy(posts, 'publishedAt', 'desc');
   }
 
   private getAllSlugs (): string[] {
